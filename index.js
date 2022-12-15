@@ -1,5 +1,7 @@
-const fs = require("fs");
-
+const fs = require('fs');
+const http = require('http')
+const url = require('url')
+/* 
 // Blocking, synchronous way
 const textIn = fs.readFileSync("./txt/input.txt", "utf-8");
 console.log(textIn);
@@ -26,9 +28,21 @@ fs.readFile("./txt/start.txt", "utf-8", (err, data1) => {
     });
   });
 });
+ */
 
-/*  //instead of arrow function(ES6)
+/*
+    //instead of arrow function(ES6)
     function(err, data) {
 
     } 
 */
+
+//////////////////////////////////
+// SERVER
+const server = http.createServer((req, res) => {
+    res.end('Hello from the server!')
+});
+
+server.listen(8000, '127.0.0.1', () => {
+    console.log('Listening to request on port 8000');
+})
